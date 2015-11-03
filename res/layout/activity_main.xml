@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.eebbk.painter.MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/ll_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="3dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="清除" />
+
+        <Button
+            android:id="@+id/btn_replay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="回放" />
+
+        <Button
+            android:id="@+id/btn_undo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="上一步" />
+
+        <Button
+            android:id="@+id/btn_color"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="900"
+            android:background="@drawable/button"
+            android:text="黑色" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="900"
+            android:background="@drawable/button"
+            android:text="清除" />
+    </LinearLayout>
+    
+    
+    
+    
+    <com.eebbk.painter.PaintView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_function"
+        android:layout_alignParentTop="true"
+        android:id="@+id/pv_show"/>
+
+</RelativeLayout>
