@@ -14,6 +14,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button replay;
 	private Button clear;
 	private Button undo;
+	private Button translate;
 	private PaintView mPaintView;
 
 
@@ -27,15 +28,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		clear = (Button) findViewById(R.id.btn_clear);
 
 		undo = (Button) findViewById(R.id.btn_undo);
+		
+		translate = (Button) findViewById(R.id.btn_translate);
 
 		mPaintView = (PaintView) findViewById(R.id.pv_show);
 
-
-
-
 		replay.setOnClickListener(this);
 		clear.setOnClickListener(this);
-
+		undo.setOnClickListener(this);
+		translate.setOnClickListener(this);
 
 	}
 
@@ -56,7 +57,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_undo:
 
-			mPaintView.clear();
+			mPaintView.undo();
+
+			break;
+		case R.id.btn_translate:
+
+			mPaintView.translate();
 
 			break;
 

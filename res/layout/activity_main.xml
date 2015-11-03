@@ -42,15 +42,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="900"
             android:background="@drawable/button"
-            android:text="黑色" />
+            android:text="恢复" />
 
         <Button
-            android:id="@+id/btn_ok"
+            android:id="@+id/btn_translate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="900"
             android:background="@drawable/button"
-            android:text="清除" />
+            android:text="三方接收" />
     </LinearLayout>
     
     

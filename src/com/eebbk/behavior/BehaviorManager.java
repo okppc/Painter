@@ -26,6 +26,15 @@ public class BehaviorManager {
 	}
 	
 	
+	public List<Behavior> getAll(){
+		if(behaviors == null || behaviors.isEmpty()){
+			return null;
+		}
+		return behaviors;
+		
+	}
+	
+	
 	
 	
 	
