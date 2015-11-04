@@ -37,12 +37,12 @@
             android:text="上一步" />
 
         <Button
-            android:id="@+id/btn_color"
+            android:id="@+id/btn_paintwidth"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="900"
             android:background="@drawable/button"
-            android:text="恢复" />
+            android:text="画笔大小" />
 
         <Button
             android:id="@+id/btn_translate"

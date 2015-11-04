@@ -28,6 +28,9 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 	private ShapeManager mShapeManager;
 	private Path path;
 	private Paint paint;
+	private int paintWidth = 5;
+
+	private float currentX,currentY;
 
 	private List<Path> paths = new ArrayList<Path>();
 	private List<Path> pathsBackup = new ArrayList<Path>();
@@ -62,6 +65,7 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 		paint = new Paint(Paint.ANTI_ALIAS_FLAG|Paint.DITHER_FLAG|Paint.FILTER_BITMAP_FLAG);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setColor(color);
+		paint.setStrokeWidth(paintWidth);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStrokeCap(Paint.Cap.ROUND);
 
@@ -69,7 +73,7 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		canvas = mSurfaceHolder.lockCanvas();
+		Canvas canvas = mSurfaceHolder.lockCanvas();
 		if(canvas == null){
 			return;
 		}
@@ -106,24 +110,14 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 
 			path.moveTo(x, y);
 
+			currentX = x;
+			currentY = y;
+
 			Log.i("aaa", "手指点下了,坐标位置为:X="+x+" Y="+y);
 			break;
 		case MotionEvent.ACTION_MOVE:
 			mBehaviorManager.add(Action.MOVE, x, y);
-			canvas = mSurfaceHolder.lockCanvas();
-
-			path.lineTo(x, y);
-			canvas.drawColor(Color.WHITE);
-
-			if(paths != null && paths.size() > 0 ){
-				for(Path path:paths){
-					canvas.drawPath(path, paint);
-				}
-			}
-
-			canvas.drawPath(path, paint);
-			Log.i("aaa", "手指移动了,坐标位置为:X="+x+" Y="+y);
-			mSurfaceHolder.unlockCanvasAndPost(canvas);
+			startMove(x, y);
 
 			break;
 		case MotionEvent.ACTION_UP:
@@ -144,17 +138,39 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 		return true;
 	}
 
+	private void startMove(float x, float y) {
 
-	public void singSong(){
+		if(!isNewPoint(x, y)){
+			return;
+		}
 
+		Canvas canvas = mSurfaceHolder.lockCanvas();
+
+		path.lineTo(x, y);
+		canvas.drawColor(Color.WHITE);
+
+		if(paths != null && paths.size() > 0 ){
+			for(Path path:paths){
+				canvas.drawPath(path, paint);
+			}
+		}
+
+		canvas.drawPath(path, paint);
+		Log.i("aaa", "手指移动了,坐标位置为:X="+x+" Y="+y);
+		mSurfaceHolder.unlockCanvasAndPost(canvas);
 	}
+
 
 	public void clear(){
 		Canvas canvas = mSurfaceHolder.lockCanvas();
 
 		canvas.drawColor(Color.WHITE);
 		if(paths != null && paths.size() > 0 ){
-			pathsBackup = paths;
+			pathsBackup.clear();
+			for(Path path: paths){
+				pathsBackup.add(path);
+			}
+			
 			paths.clear();
 		}
 
@@ -167,9 +183,10 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 
 	public void replay(){
 		Canvas canvas = mSurfaceHolder.lockCanvas();
-
-		if(paths != null && paths.size() > 0 ){
-			for(Path path:paths){
+		canvas.drawColor(Color.WHITE);
+		
+		if(pathsBackup != null && pathsBackup.size() > 0 ){
+			for(Path path:pathsBackup){
 				canvas.drawPath(path, paint);
 			}
 		}
@@ -206,16 +223,23 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 			Log.i("bbb", "behaviors列表为空！");
 			return;
 		}
-		Log.i("bbb", "方法没有响应呀");
 		Path p = new Path();
 		List<Path> realBehav = new ArrayList<Path>();
-		
+
+		if( Action.CLEAR == behaviors.get(behaviors.size()-1).getStep() ){
+			behaviors.remove(behaviors.size()-1);
+		}
+
+		if(behaviors.isEmpty()){
+			return;
+		}
+
 		for(Behavior behavior : behaviors){
-			
+
 			int step = behavior.getStep();
 			float x = behavior.getX();
 			float y = behavior.getY();
-			
+
 			switch (step) {
 			case Action.START:
 				p.moveTo(x, y);
@@ -223,50 +247,85 @@ public class PaintView extends SurfaceView implements SurfaceHolder.Callback{
 				break;
 			case Action.MOVE:
 				p.lineTo(x, y);
-				
+
 				break;
 			case Action.END:
 				Path pa = new Path(p);
 				realBehav.add(pa);
 				p.reset();
-				
+
 				break;
 			case Action.CLEAR:
-				
+
 				realBehav.clear();
-				
+
 				break;
 			case Action.UNDO:
 				if(realBehav == null || realBehav.isEmpty()){
-					continue;
+					break;
 				}
 				realBehav.remove(realBehav.size()-1);
-				
+
 				break;
 
 			default:
 				break;
 			}
 		}
-		
-		
+
+
+
 		if(realBehav != null && realBehav.size()>0 ){
 			Canvas canvas = mSurfaceHolder.lockCanvas();
 			canvas.drawColor(Color.WHITE);
 			Log.i("bbb", "画接收到的Path！path的大小："+realBehav.size());
-			
+
 			for(Path path:realBehav){
 				canvas.drawPath(path, paint);
 			}
-			
+
 			mSurfaceHolder.unlockCanvasAndPost(canvas);
 		}
-		
-		
-		
-		
-		
+
 	}
-	
+
+
+	public int setPaintWidth(){
+
+		if(paint == null){
+			paint = new Paint(Paint.ANTI_ALIAS_FLAG|Paint.DITHER_FLAG|Paint.FILTER_BITMAP_FLAG);
+			paint.setStyle(Paint.Style.STROKE);
+			paint.setColor(color);
+			paint.setStrokeWidth(paintWidth);
+			paint.setStrokeJoin(Paint.Join.ROUND);
+			paint.setStrokeCap(Paint.Cap.ROUND);
+		}
+		if(paintWidth > 20){
+			paintWidth = 5;
+		}
+		paint.setStrokeWidth(++paintWidth);
+		return paintWidth;
+	}
+
+
+
+	public boolean isNewPoint(float x ,float y){
+
+		//均值策略1,半径
+		if( Math.sqrt( Math.pow((currentX-x),2)+Math.pow((currentY-y),2) ) <= 5f  ){
+			
+		//绝对值策略,边长
+//		if( Math.abs(currentX - x) <= 5f || Math.abs(currentY - y) <= 5f  ){
+			currentX = x;
+			currentY = y;
+			return false;
+		}
+		currentX = x;
+		currentY = y;
+		return true;
+
+	}
+
+
 
 }
