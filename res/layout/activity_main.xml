@@ -52,15 +52,246 @@
             android:background="@drawable/button"
             android:text="三方接收" />
     </LinearLayout>
-    
-    
-    
-    
+
+    <LinearLayout
+        android:id="@+id/ll_function1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_function"
+        android:layout_margin="3dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_color"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="颜色" />
+
+        <Button
+            android:id="@+id/btn_eraser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="橡皮擦" />
+
+        <Button
+            android:id="@+id/btn_orderPic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="固定图形" />
+
+        <Button
+            android:id="@+id/btn_test2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="900"
+            android:background="@drawable/button"
+            android:text="未知2" />
+
+        <Button
+            android:id="@+id/btn_test1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="900"
+            android:background="@drawable/button"
+            android:text="未知3" />
+    </LinearLayout>
+
+    <!--  com.eebbk.painter.TestView
+        android:id="@+id/pv_show"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentTop="true" / -->
+
     <com.eebbk.painter.PaintView
+        android:id="@+id/pv_edit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ll_function"
-        android:layout_alignParentTop="true"
-        android:id="@+id/pv_show"/>
+        android:layout_above="@id/ll_function1"
+        android:layout_alignParentTop= "true" />
+    
+    
+     <LinearLayout
+            android:id="@+id/widget03"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
+            <LinearLayout
+                android:id="@+id/widget04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonnew_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/newx" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttonopen_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/openx" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttoncolor_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/colorx" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttonsave_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/savex" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonpen_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/penx" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttoneraser_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/eraserx" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonpaintpot_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/yqtx" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttonspraygun_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/pqx" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonoval_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/tyx" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttonrect_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cubex" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonline_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/linex" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttoncycle_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/circlex" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonundo_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/undox" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttonplygon_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/dbxx" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/widget11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/buttonredo_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/redox" >
+                </Button>
+
+                <Button
+                    android:id="@+id/buttonabout_ID"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/gyx" >
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+    
+    
+    
 </RelativeLayout>

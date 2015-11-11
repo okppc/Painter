@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/ll_shape"
+        android:layout_above="@+id/ll_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:orientation="horizontal" >
+        
+        <Button
+            android:id="@+id/btn_path"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="900"
+            android:background="@drawable/button"
+            android:text="任意路径" />
+
+        <Button
+            android:id="@+id/btn_circle_stroke"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="空心圆" />
+
+        <Button
+            android:id="@+id/btn_reject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="矩形" />
+
+        <Button
+            android:id="@+id/btn_triangle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:background="@drawable/button"
+            android:text="直线" />
+
+        <Button
+            android:id="@+id/btn_move"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="900"
+            android:background="@drawable/button"
+            android:text="移动" />
+
+    </LinearLayout>
+    
+
+</LinearLayout>

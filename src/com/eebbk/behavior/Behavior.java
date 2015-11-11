@@ -20,6 +20,7 @@ public class Behavior implements Serializable{
 		byte END = 2;
 		byte UNDO = 3;
 		byte CLEAR = 4;
+		byte PIC = 5;
 	}
 	
 	
